@@ -1,12 +1,39 @@
 {% load static %}
 <header class="container mt-3">
   <div class="d-flex justify-content-between align-items-center ppr-light rounded-3 px-4 py-3">
-    <h1 class="fs-3 fw-bold m-0 navbar-brand ">
-      <a href="{% url 'pages:index' %}" class="text-decoration-none">schedulite</a>
+    <h1 class="fs-3 fw-bold m-0 navbar-brand">
+      <a href="{% url 'homepage' %}" class="text-decoration-none">schedulite</a>
     </h1>
-    <div>
-      <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Log in</a>
-      <a href="{% url 'users:registration' %}" class="btn btn-primary">Sign up</a>
-    </div>
+
+    {% if user.is_authenticated %}
+      <!-- authenticated -->
+      <div class="dropdown">
+        <a class="d-flex align-items-center text-decoration-none dropdown-toggle"
+           href="#"
+           id="userMenu"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
+          <span class="me-2">{{ user.username }}</span>
+          <img src="{% static 'img/profile-icon.png' %}" width="32" height="32" class="bg-light rounded-circle me-2">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+          <a class="dropdown-item" href="{% url 'logout' %}">Profile</a>
+          <li><hr class="dropdown-divider"></li>
+          <a class="dropdown-item" href="{% url 'logout' %}">Tasks</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Schedule</a>
+          <li><hr class="dropdown-divider"></li>
+          <a class="dropdown-item" href="{% url 'logout' %}">Settings</a>
+          <a class="dropdown-item text-danger" href="{% url 'logout' %}">Log out</a>
+        </ul>
+      </div>
+    {% else %}
+      <!-- unauthenticated-->
+      <div>
+        <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Log in</a>
+        <a href="{% url 'users:registration' %}" class="btn btn-primary">Sign up</a>
+      </div>
+    {% endif %}
+
+    
   </div>
 </header>
