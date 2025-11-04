@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('pages.urls')),
+    path('', TemplateView.as_view(template_name='homepage.html'),
+         name='homepage'),
     path('', include('django.contrib.auth.urls')),
-    path('users/', include('users.urls')),
+    path('', include('users.urls')),
     path('admin/', admin.site.urls),
 ]

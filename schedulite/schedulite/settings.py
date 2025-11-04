@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'import_export',
     'django_bootstrap5',
     'users.apps.UsersConfig',
-    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
