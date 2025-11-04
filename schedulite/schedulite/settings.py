@@ -65,6 +65,8 @@ WSGI_APPLICATION = 'schedulite.wsgi.application'
 
 AUTH_USER_MODEL = 'users.User'
 
+LOGIN_REDIRECT_URL = '/'
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
